@@ -162,7 +162,7 @@ class SingletonTests(unittest.TestCase):
         throw1 = False
         try:
             [2, 3, 4]/first(lambda q: q > 100)
-        except:
+        except EmptySequenceException:
             print("ERROR")
             throw1 = True
         self.assertTrue(throw1, 'First threw')
@@ -207,7 +207,7 @@ class SingletonTests(unittest.TestCase):
         throw2 = False
         try:
             ['first', 'second', 'third']/last(lambda q: len(q) > 100)
-        except:
+        except EmptySequenceException:
             print("ERROR")
             throw2 = True
         self.assertTrue(throw2, "Last throws on empty sequence")
@@ -253,7 +253,7 @@ class SingletonTests(unittest.TestCase):
         throw4 = False
         try:
             [1, 2, 3, 4]/single(lambda q: q < 3)
-        except:
+        except DuplicateException:
             print("ERROR")
             throw4 = True
         self.assertTrue(throw4, 'Single throws when multiple returned')
@@ -263,7 +263,7 @@ class SingletonTests(unittest.TestCase):
         throw3 = False
         try:
             []/single()
-        except:
+        except EmptySequenceException:
             print("ERROR")
             throw3 = True
         self.assertTrue(throw3, 'Single throws on empty sequence')
@@ -273,7 +273,7 @@ class SingletonTests(unittest.TestCase):
         throw5 = False
         try:
             [1, 2, 3, 4]/single(lambda q: q > 10000)
-        except:
+        except EmptySequenceException:
             throw5 = True
         self.assertTrue(throw5, 'Single throws on empty sequence with filter')
 
@@ -292,7 +292,7 @@ class SingletonTests(unittest.TestCase):
         throw6 = False
         try:
             [1, 2, 3, 4]/singleOrDefault(lambda q: q % 2 == 0)
-        except:
+        except DuplicateException:
             print("ERROR")
             throw6 = True
         self.assertTrue(throw6, "SingleOrDefault still throws on multiple")

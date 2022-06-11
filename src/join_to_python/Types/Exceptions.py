@@ -1,20 +1,20 @@
-class ArgumentNullException(Exception):
+class ArgumentException(Exception):
     pass
 
-class EmptySequenceException(Exception):
+class ArgumentNullException(Exception):
     pass
 
 class DataTypeException(TypeError):
     pass
 
-class OutOfRangeException(Exception):
+class DuplicateException(Exception):
+    pass
+
+class EmptySequenceException(Exception):
     pass
 
 class NullReferenceException(Exception):
     pass
 
-class DuplicateException(Exception):
-    pass
-
-class ArgumentException(Exception):
+class OutOfRangeException(Exception):
     pass
