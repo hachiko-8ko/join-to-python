@@ -38,8 +38,9 @@ Seven functions needed new names: _all, any, max, min, sum, except, zip_. Making
 
 ### Installation and use
 
-1. Download the `build` directory and `setup.py` to the machine where you want to install JOIN to Python.
-2. From inside the directory where you downloaded the files, execute `python3 setup.py install` to install as system (requires root) or `python3 setup.py install --user` to install under your user. This, of course, is assuming you have python3 aliased to your python 3, to allow you to have python2 and python3 living side by side.
+1. Download the repository to the machine where you want to install JOIN to Python.
+2. From inside the directory where you downloaded the files, execute `python3 setup.py build`.
+3. Execute `python3 setup.py install` to install as system (requires root) or `python3 setup.py install --user` to install under your user. This, of course, is assuming you have python3 aliased to your python 3, to allow you to have python2 and python3 living side by side.
 
 To use it, include this in your python script:
 ```
