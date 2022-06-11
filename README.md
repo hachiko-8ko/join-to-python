@@ -1,7 +1,7 @@
 # JOIN to Python
 ## Implemention of LINQ to Objects in Python
 
-JOIN to Python is a python implementation of JOIN to Javascript, a library that allows you to join lists to other lists, select, order, etc. It also adds a few methods that I wanted to do myself (outer joins are painful and hacky in LINQ so I made better methods). There are other ways to do most of these things, using filter(), map(), list comprehensions, and so on, but as far as I know there's not a complete fluent API, partly because it's very difficult to do fluent APIs based on the Python array.
+JOIN to Python is a python implementation of [JOIN to Javascript](https://github.com/hachiko-8ko/join-to-javascript), a library that allows you to join lists to other lists, select, order, etc. It also adds a few methods that I wanted to do myself (outer joins are painful and hacky in LINQ so I made better methods). There are other ways to do most of these things, using filter(), map(), list comprehensions, and so on, but as far as I know there's not a complete fluent API, partly because it's very difficult to do fluent APIs based on the Python array.
 
 When possible, JOIN defers execution in the same way that LINQ provides deferred execution, waiting until you fetch the data by iterating it, calling toArray(), or fetching a single item. This means, for example, if you fetch `integers/where(row => isPrime(row))/first()` it will halt on the first prime, unlike `drain(filter(lambda: row => isPrime(row), integers))[0]` which processes every row in the array.
 
@@ -49,5 +49,3 @@ from join_to_python import *
 ### Documentation and examples
 
 See [IQueryable.README.md](https://github.com/hachiko-8ko/join-to-python/blob/master/src/IQueryable.README.md) for complete documentation. See the test cases in the [tests](https://github.com/hachiko-8ko/join-to-python/blob/master/src/tests) folder for detailed examples of all the methods.
-
-(TODO: Check the URIs once committed)
