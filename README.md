@@ -3,7 +3,7 @@
 
 JOIN to Python is a python implementation of [JOIN to Javascript](https://github.com/hachiko-8ko/join-to-javascript), a library that allows you to join lists to other lists, select, order, etc. It also adds a few methods that I wanted to do myself (outer joins are painful and hacky in LINQ so I made better methods). There are other ways to do most of these things, using filter(), map(), list comprehensions, and so on, but as far as I know there's not a complete fluent API, partly because it's very difficult to do fluent APIs based on the Python array.
 
-When possible, JOIN defers execution in the same way that LINQ provides deferred execution, waiting until you fetch the data by iterating it, calling toArray(), or fetching a single item. This means, for example, if you fetch `integers/where(row => isPrime(row))/first()` it will halt on the first prime, unlike `drain(filter(lambda: row => isPrime(row), integers))[0]` which processes every row in the array.
+When possible, JOIN defers execution in the same way that LINQ provides deferred execution, waiting until you fetch the data by iterating it, calling toArray(), or fetching a single item. This means, for example, if you fetch `integers/where(row => isPrime(row))/first()` it will halt on the first prime, unlike `[row for row in integers if isPrime(row)][0]` which processes every row in the array (you can use filter, which is probably deferred, but `for row in filter(isPrime, integers): return row` is so sloppy).
 
 Only LINQs fluent syntax is included. You would need to be able to make custom operators to do query syntax, and that's not allowed in Python.
 
@@ -38,9 +38,11 @@ Seven functions needed new names: _all, any, max, min, sum, except, zip_. Making
 
 ### Installation and use
 
-1. Download the repository to the machine where you want to install JOIN to Python.
+1. Download the src/ repository to the machine where you want to install JOIN to Python.
 2. From inside the directory where you downloaded the files, execute `python3 setup.py build`.
-3. Execute `python3 setup.py install` to install as system (requires root) or `python3 setup.py install --user` to install under your user. This, of course, is assuming you have python3 aliased to your python 3, to allow you to have python2 and python3 living side by side.
+3. Execute `python3 setup.py install` to install as system (requires root) or `python3 setup.py install --user` to install under your user.
+
+This, of course, is assuming you have python3 aliased to your python 3, to allow you to have python2 and python3 living side by side.
 
 To use it, include this in your python script:
 ```
